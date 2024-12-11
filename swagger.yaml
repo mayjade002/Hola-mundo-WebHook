@@ -1,0 +1,36 @@
+swagger: "2.0"
+info:
+  description: "API de Webhook Hola Mundo con Swagger y Node.js"
+  version: "1.0.0"
+  title: "Webhook Hola Mundo"
+host: "localhost:4000"   # Cambia aquí al nuevo puerto
+basePath: "/"
+schemes:
+  - "http"
+paths:
+  /webhook:
+    post:
+      summary: "Recibe un Webhook y devuelve un mensaje"
+      parameters:
+        - in: "body"
+          name: "payload"
+          description: "El mensaje que envías al webhook"
+          required: true
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Hola desde el webhook"
+      responses:
+        200:
+          description: "Respuesta exitosa"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+                example: "Hola Mundo"
+              receivedPayload:
+                type: "object"
+                example: { "message": "Hola desde el webhook" }
